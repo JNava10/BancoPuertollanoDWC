@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
     <title>BancoPuertollano</title>
     <link rel="stylesheet" type="text/css" href="estilos.css" />
 </head>
 <body>
-    <div id="menu">
-       
-    </div>
-    
-</body>
+<div id="menu">
+    <h1>BancoPuertollano</h1>
+    <ul >
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="infoCuenta.html">Información Cuenta</a></li>
+        <li><a href="tarjetas.html">Tarjetas</a></li>
+    </ul>
+    <h2>Tarjetas</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Número de cuenta&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>Número de tarjeta&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>Activa</th>
+        </tr>
+        </thead>
+        <tbody id="tab">
+        </tbody >
+    </table>
+    <h2>Agregar Tarjeta</h2>
+    <label for="tarjeta">Numero cuenta: </label>
+    <input type="text" id="tarjeta" placeholder="Número de cuenta"><br><br>
 
+    <label for="cvv">Numero de tarjeta: </label>
+    <input type="text" id="cvv" value="CVV"><br><br>
+
+    <label for="activa">Activa: </label>
+    <input type="checkbox" name="activa" id="activa"><br><br>
+    <button id="guardar">Guardar tarjeta</button>
+    <p id="error"></p>
+    <script src="declaracionClases.js"></script>
+    <script src="app3.js"></script>
+</div>
+</body>
 </html>
