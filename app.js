@@ -1,16 +1,13 @@
-let idInput = document.getElementById('idPersona');
 let nombreInput = document.getElementById('nombre');
 let apellido1Input = document.getElementById('apellido1');
 let apellido2Input =document.getElementById('apellido2');
 let nacionalidadInput = document.getElementById('nacionalidad');
-const guardarInput = document.getElementById('guardar');
+const modificarInput = document.getElementById('modificar');
 const mensajeOcultoInput = document.getElementById('mensajeOculto');
 
 class Persona {
-  static contador = 0; // Contador para generar ids automáticos
 
   constructor(nombre, apellido1, apellido2, nacionalidad) {
-    this.id = ++Persona.contador;
     this.nombre = nombre;
     this.apellido1 = apellido1;
     this.apellido2 = apellido2;
@@ -20,25 +17,21 @@ class Persona {
 
 var persona =
 
-function cargarDatos(){
-    persona = new Persona('Persona','Apellido','Apellido', 'Frances' )
-}
+document.addEventListener("DOMContentLoaded", function() {// Inicia la función al abrir el html. Modificiación de la función cargarDatos()
+    if (persona == null){
+        persona = new Persona('Leon','Scott','Kennedy', 'Estadounidense' )  
+    } else {
+        nombreInput.value = persona.nombre
+        apellido1Input.value = persona.apellido1
+        apellido2Input.value = persona.apellido2
+        nacionalidadInput.value = persona.nacionalidad
+    }
+}); 
 
 function navegar(){
     var co = JSON.stringify(persona);
     localStorage.setItem("persona",co)
-    window.location.href='datos.html'
-}
-
-
-function cargarDatos(){
-    let menu = document.getElementById('menu').innerHTML;
-
-    idInput.value = persona.id;
-    nombreInput.value = persona.nombre;
-    apellido1Input.value = persona.apellido1;
-    apellido2Input.value = persona.apellido2;
-    nacionalidadInput.value = persona.nacionalidad;
+    window.location.href='infoCuenta.html'
 }
 
 function cargarCabecera(dest){
@@ -61,14 +54,15 @@ function campoEsValido(valor, regexp) {
     return regexp.test(valor);
 }
 
-guardarInput.addEventListener('click', function(){
+modificarInput.addEventListener('click', function(){
 
     if (mensajeOcultoInput.innerHTML === ""){
-        if (persona === null){
-            persona = Persona(nombreInput.value, apellido1Input.value, apellido2Input.value, nacionalidadInput.value)
-            mensajeOcultoInput.style.color = 'green'
-            mensajeOcultoInput.innerHTML = "Guardado los datos correctamente"
-        }
+
+        persona = Persona(nombreInput.value, apellido1Input.value, apellido2Input.value, nacionalidadInput.value)
+        mensajeOcultoInput.style.color = 'green'
+        mensajeOcultoInput.innerHTML = "Guardado los datos correctamente"
+
+        navegar()
     }
 })
 
