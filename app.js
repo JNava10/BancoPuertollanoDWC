@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function() {// Inicia la función 
 }); 
 
 function navegar(){
-    var co = JSON.stringify(persona);
-    localStorage.setItem("persona",co)
+    var str = JSON.stringify(persona);
+    localStorage.setItem(str)
     window.location.href='infoCuenta.html'
 }
 
