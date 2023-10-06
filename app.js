@@ -2,7 +2,7 @@ let nombreInput = document.getElementById('nombre');
 let apellido1Input = document.getElementById('apellido1');
 let apellido2Input =document.getElementById('apellido2');
 let nacionalidadInput = document.getElementById('nacionalidad');
-const modificarInput = document.getElementById('guardar');
+const modificarInput = document.getElementById('modificar');
 const mensajeOcultoInput = document.getElementById('mensajeOculto');
 
 class Persona {
@@ -17,14 +17,21 @@ class Persona {
 
 var persona =
 
-function cargarDatos(){
-    persona = new Persona('Persona','Apellido','Apellido', 'Frances' )
-}
+document.addEventListener("DOMContentLoaded", function() {// Inicia la función al abrir el html
+    if (persona == null){
+        persona = new Persona('Leon','Scott','Kennedy', '' )  
+    } else {
+        nombreInput.value = persona.nombre
+        apellido1Input.value = persona.apellido1
+        apellido2Input.value = persona.apellido2
+        nacionalidadInput.value = persona.nacionalidad
+    }
+}); 
 
 function navegar(){
     var co = JSON.stringify(persona);
     localStorage.setItem("persona",co)
-    window.location.href='index.html'
+    window.location.href='infoCuenta.html'
 }
 
 function cargarCabecera(dest){
@@ -55,6 +62,7 @@ modificarInput.addEventListener('click', function(){
         mensajeOcultoInput.style.color = 'green'
         mensajeOcultoInput.innerHTML = "Guardado los datos correctamente"
 
+        navegar()
     }
 })
 
