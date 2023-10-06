@@ -17,9 +17,9 @@ class Persona {
 
 var persona =
 
-document.addEventListener("DOMContentLoaded", function() {// Inicia la función al abrir el html
+document.addEventListener("DOMContentLoaded", function() {// Inicia la función al abrir el html. Modificiación de la función cargarDatos()
     if (persona == null){
-        persona = new Persona('Leon','Scott','Kennedy', '' )  
+        persona = new Persona('Leon','Scott','Kennedy', 'Estadounidense' )  
     } else {
         nombreInput.value = persona.nombre
         apellido1Input.value = persona.apellido1
