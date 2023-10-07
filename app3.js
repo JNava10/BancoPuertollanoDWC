@@ -7,8 +7,8 @@ let cvvInput = document.getElementById("cvv");
 let activaCheckbox = document.getElementById("activa");
 let errorParrafo = document.getElementById("error");
 let datosPorDefecto = [
-    new Tarjeta('ES21 1465 0100 2030876293', '1234 12345 123456', true),
-    new Tarjeta('ES21 1465 0100 2030876293', '1233 12345 123456', false)
+    new Tarjeta('', '123', true),
+    new Tarjeta('ES21 1465 0100 2030876293', '123', false)
 ];
 
 onload = function () {
@@ -17,13 +17,13 @@ onload = function () {
     }
 
     numeroTarjetaInput.value = "ES21 1465 0100 2030876293";
-    cvvInput.value = "1233 12345 123456";
+    cvvInput.value = "123";
 }
 
 guardarBoton.onclick = function () {
     let mensajeError = "";
-    let numeroEsValido = campoEsValido(numeroTarjetaInput.value, /ES\d{2} \d{4} \d{4} \d{10}$/);
-    let cvvValido = campoEsValido(cvvInput.value, /\d{4} \d{5} \d{6}$/);
+    let numeroEsValido = campoEsValido(numeroTarjetaInput.value, /\d{4}$/);
+    let cvvValido = campoEsValido(cvvInput.value, /\d{3}$/);
 
     if (numeroEsValido === -1) {
         mensajeError += "No se ha introducido el numero de la tarjeta.\n";
