@@ -41,7 +41,6 @@ var cantRegex = /^[0-9]+$/ // Valida que los campos sean números
 
 retirarBoton.addEventListener('click', function(){
     if (cantRegex.test(retirarInput.value) && cuenta.retirarSaldo(retirarInput.value) == true) {
-        cuenta.retirarSaldo(retirarInput.value)
         mensajeOcultoInput.style.color = 'green'
         mensajeOcultoInput.innerHTML = "Saldo retirado correctamente: " + retirarInput.value;
         saldoInput.value = cuenta.saldo;
@@ -56,7 +55,6 @@ retirarBoton.addEventListener('click', function(){
 
 ingresarBoton.addEventListener('click', function(){ 
     if (cantRegex.test(ingresarInput.value) && cuenta.ingresarSaldo(ingresarInput.value) == true){
-        cuenta.ingresarSaldo(ingresarInput.value)
         mensajeOcultoInput.style.color = 'green'
         mensajeOcultoInput.innerHTML = "Saldo ingresado correctamente: " + ingresarInput.value;
         saldoInput.value = cuenta.saldo;
