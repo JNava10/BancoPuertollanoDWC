@@ -48,7 +48,10 @@ modificarInput.addEventListener('click', function(){
 
     if (mensajeOcultoInput.innerHTML === ""){ // Si está vacío, significa que las validaciones han sido correctas
 
-        persona = Persona(nombreInput.value, apellido1Input.value, apellido2Input.value, nacionalidadInput.value)
+        persona.nombre = nombreInput.value
+        persona.apellido1 = apellido1Input.value
+        persona.apellido2 = apellido2Input.value
+        persona.nacionalidad = nacionalidadInput.value
         mensajeOcultoInput.style.color = 'green'
         mensajeOcultoInput.innerHTML = "Guardado los datos correctamente"
 
