@@ -13,9 +13,15 @@ var str = JSON.parse(persona)
 var cuenta 
 
 document.addEventListener("DOMContentLoaded", function() {// Inicia la función al abrir el html. Modificiación de la función cargarDatos()
-    if (cuenta == null){
+    
+    cuentaSt = localStorage.getItem("cuenta")
+    var cu = JSON.parse(cuentaSt)
+
+    if (cuentaSt == null){
         cuenta = new Cuenta("ES21 1465 0100 72 2030876293", 500)
-    } 
+    } else {
+        cuenta = cu
+    }
 
     ibanInput.value = cuenta.iban
     saldoInput.value = cuenta.saldo
