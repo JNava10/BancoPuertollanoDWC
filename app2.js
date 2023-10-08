@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function() {// Inicia la función 
         cuenta = new Cuenta(per, "ES21 1465 0100 72 2030876293", 500)
     } else {
         cuenta = cu
+        if (cuenta.persona != per){
+            cuenta.persona = per //Se modifica los datos de la persona en la tarjeta a la nueva persona
+        }
     }
 
     ibanInput.value = cuenta.iban
