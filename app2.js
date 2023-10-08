@@ -1,3 +1,9 @@
+let retirarInput = document.getElementById('retirar')
+let ingresarInput = document.getElementBytId('ingresar')
+let retirarBoton = document.getElementById('retirarBoton')
+let ingresarBoton = document.getElementById('ingresarBoton')
+let mensajeOcultoInput = document.getElementById('mensajeOculto')
+
 // Script de la pantalla Información Cuenta
 let ibanInput = document.getElementById('iban')
 let saldoInput = document.getElementById('saldo')
@@ -56,9 +62,35 @@ function navegar(){
     window.location.href='tarjetas.html'
 }
 
-/*
-Queda por implementar:
-- Que se ingrese o se retire el saldo cuando se pulsen los botones y mostrar el mensaje
-*/
+var cantRegex = /^[0-9]+$/ // Valida que los campos sean números
 
+retirarBoton.addEventListener('click', function(){
+    if (cantRegex.test(retirarInput.value) == true){
+        if (cuenta.retirarSaldo(retirarInput.value) == true){
+            cuenta.retirarSaldo(retirarInput.value)
+            mensajeOcultoInput.style = 'green'
+            mensajeOcultoInput.innerHTML = "Saldo retirado correctamente: "+retirarInput
+            saldoInput.value = cuenta.saldo;
+        }
+    } 
+
+    if (ingresarInput.value != null){
+        ingresarInput.value = null
+    }
+})
+
+ingresarBoton.addEventListener('click', function(){
+    if (cantRegex.test(retirarInput.value) == true){
+        if (cuenta.ingresarSaldo(ingresarInput.value) == true){
+            cuenta.ingresarSaldo(ingresarInput.value)
+            mensajeOcultoInput.style = 'green'
+            mensajeOcultoInput.innerHTML = "Saldo ingresado correctamente: "+ingresarInput
+            saldoInput.value = cuenta.saldo;
+        }
+    }
+
+    if (retirarInput.value != null){
+        retirarInput.value = null
+    }
+})
 
