@@ -2,8 +2,8 @@ let nombreInput = document.getElementById('nombre');
 let apellido1Input = document.getElementById('apellido1');
 let apellido2Input =document.getElementById('apellido2');
 let nacionalidadInput = document.getElementById('nacionalidad');
-const modificarInput = document.getElementById('modificar');
-const mensajeOcultoInput = document.getElementById('mensajeOculto');
+let modificarInput = document.getElementById('modificar');
+let mensajeOcultoInput = document.getElementById('mensajeOculto');
 
 class Persona {
 
@@ -19,13 +19,13 @@ var persona =
 
 document.addEventListener("DOMContentLoaded", function() {// Inicia la función al abrir el html. Modificiación de la función cargarDatos()
     if (persona == null){
-        persona = new Persona('Leon','Scott','Kennedy', 'Estadounidense' )  
-    } else {
-        nombreInput.value = persona.nombre
-        apellido1Input.value = persona.apellido1
-        apellido2Input.value = persona.apellido2
-        nacionalidadInput.value = persona.nacionalidad
-    }
+        persona = new Persona('Leon','Scott','Kennedy', 'Estadounidense', 500, "ES21 1465 0100 72 2030876293")  
+    } 
+    nombreInput.value = persona.nombre
+    apellido1Input.value = persona.apellido1
+    apellido2Input.value = persona.apellido2
+    nacionalidadInput.value = persona.nacionalidad
+
 }); 
 
 function navegar(){
@@ -56,7 +56,7 @@ function campoEsValido(valor, regexp) {
 
 modificarInput.addEventListener('click', function(){
 
-    if (mensajeOcultoInput.innerHTML === ""){
+    if (mensajeOcultoInput.innerHTML === ""){ // Si está vacío, significa que las validaciones han sido correctas
 
         persona = Persona(nombreInput.value, apellido1Input.value, apellido2Input.value, nacionalidadInput.value)
         mensajeOcultoInput.style.color = 'green'
@@ -65,5 +65,9 @@ modificarInput.addEventListener('click', function(){
         navegar()
     }
 })
+
+// Datos de la cuenta de la segunda pantalla 
+var cuenta = localStorage.getItem("cuenta")
+var cu = JSON.parse(cuenta)
 
 
