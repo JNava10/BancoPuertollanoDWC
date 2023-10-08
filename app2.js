@@ -71,22 +71,34 @@ retirarBoton.addEventListener('click', function(){
             mensajeOcultoInput.style = 'green'
             mensajeOcultoInput.innerHTML = "Saldo retirado correctamente: "+retirarInput
             saldoInput.value = cuenta.saldo;
+        } else {
+            mensajeOcultoInput.style = 'red'
+            mensajeOcultoInput.innerHTML = "Operación incorrecta - saldo no retirado"
         }
-    } 
+    } else {
+        mensajeOcultoInput.style = 'red'
+            mensajeOcultoInput.innerHTML = "Operación incorrecta - saldo no retirado"
+    }
 
     if (ingresarInput.value != null){
         ingresarInput.value = null
     }
 })
 
-ingresarBoton.addEventListener('click', function(){
+ingresarBoton.addEventListener('click', function(){ 
     if (cantRegex.test(retirarInput.value) == true){
         if (cuenta.ingresarSaldo(ingresarInput.value) == true){
             cuenta.ingresarSaldo(ingresarInput.value)
             mensajeOcultoInput.style = 'green'
             mensajeOcultoInput.innerHTML = "Saldo ingresado correctamente: "+ingresarInput
             saldoInput.value = cuenta.saldo;
+        } else {
+            mensajeOcultoInput.style = 'red'
+            mensajeOcultoInput.innerHTML = "Operación incorrecta - saldo no ingresado"
         }
+    } else {
+        mensajeOcultoInput.style = 'red'
+            mensajeOcultoInput.innerHTML = "Operación incorrecta - saldo no ingresado"
     }
 
     if (retirarInput.value != null){
