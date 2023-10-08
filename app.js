@@ -5,22 +5,22 @@ let nacionalidadInput = document.getElementById('nacionalidad');
 let modificarInput = document.getElementById('modificar');
 let mensajeOcultoInput = document.getElementById('mensajeOculto');
 
-var persona =
+var persona;
 
 document.addEventListener("DOMContentLoaded", function() {// Inicia la función al abrir el html. Modificiación de la función cargarDatos()
     if (persona == null){
         persona = new Persona('Leon','Scott','Kennedy', 'Estadounidense', 500, "ES21 1465 0100 72 2030876293")  
-    } 
+    }
+
     nombreInput.value = persona.nombre
     apellido1Input.value = persona.apellido1
     apellido2Input.value = persona.apellido2
     nacionalidadInput.value = persona.nacionalidad
-
 }); 
 
 function navegar(){
     var str = JSON.stringify(persona);
-    localStorage.setItem(str)
+    localStorage.setItem("persona", str)
     window.location.href='infoCuenta.html'
 }
 
@@ -35,7 +35,7 @@ function validarCampos() {
         mensajeOcultoInput.innerHTML += "Primer apellido no valido<br>";
     } else if (!campoEsValido(apellido2Input.value, /A-Z[a-z]{2,19}/)) {
         mensajeOcultoInput.innerHTML += "Segundo apellido no valido<br>";
-    } else if (!campoEsValido(nacionalidadErrorCampo.value, /[a-z]{3,15}/)) {
+    } else if (!campoEsValido(nacionalidadInput.value, /[a-zñ]{3,15}/)) {
         mensajeOcultoInput.innerHTML += "Nacionalidad no valida";
     }
 }

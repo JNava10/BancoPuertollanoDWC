@@ -1,28 +1,33 @@
 let tabla = document.getElementById('tab');
-let personaAlmacenada = localStorage.getItem('persona');
 let guardarBoton = document.getElementById("guardar");
+let personaAlmacenada = localStorage.getItem('persona');
 let datosPersona = JSON.parse(personaAlmacenada);
 let numeroTarjetaInput = document.getElementById("tarjeta");
 let cvvInput = document.getElementById("cvv");
 let activaCheckbox = document.getElementById("activa");
 let errorParrafo = document.getElementById("error");
+let itemCuenta = localStorage.getItem("cuenta");
+let cuenta = JSON.parse(itemCuenta);
+
+
 let datosPorDefecto = [
-    new Tarjeta('', '123', true),
-    new Tarjeta('ES21 1465 0100 2030876293', '123', false)
+    new Tarjeta('1234 12345 123456', '123', true),
+    new Tarjeta('1234 12345 12345', '123', false)
 ];
 
 onload = function () {
     for (let i = 0; i < datosPorDefecto.length; i++) {
-        crearNuevaTarjeta(datosPorDefecto[i])
+        crearNuevaTarjeta(datosPorDefecto[i], cuenta)
     }
 
-    numeroTarjetaInput.value = "ES21 1465 0100 2030876293";
+    numeroTarjetaInput.value = "1234 12345 123456";
     cvvInput.value = "123";
 }
 
 guardarBoton.onclick = function () {
+    console.log("a")
     let mensajeError = "";
-    let numeroEsValido = campoEsValido(numeroTarjetaInput.value, /\d{4}$/);
+    let numeroEsValido = campoEsValido(numeroTarjetaInput.value, /\d+/);
     let cvvValido = campoEsValido(cvvInput.value, /\d{3}$/);
 
     if (numeroEsValido === -1) {
@@ -44,13 +49,13 @@ guardarBoton.onclick = function () {
             activaCheckbox.checked
         );
 
-        crearNuevaTarjeta(tarjeta);
+        crearNuevaTarjeta(tarjeta, cuenta);
     } else {
         errorParrafo.innerText = mensajeError;
     }
 }
 
-function crearNuevaTarjeta(tarjeta) {
+function crearNuevaTarjeta(tarjeta, cuenta) {
     let estado;
 
     if (tarjeta.activa) {
@@ -59,7 +64,9 @@ function crearNuevaTarjeta(tarjeta) {
         estado = 'No'
     }
 
-    tabla.innerHTML += `<tr><td>${datosPersona}</td><td>${tarjeta.numero}</td> <td>${estado}</td></tr>`;
+    cuenta.tarjetas += tarjeta;
+    console.log(cuenta)
+    tabla.innerHTML += `<tr><td>${cuenta.iban}</td><td>${tarjeta.numero}</td> <td>${estado}</td></tr>`;
 }
 
 /**

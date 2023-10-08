@@ -27,13 +27,20 @@
         </table>
         <h2>Agregar Tarjeta</h2>
         <label for="tarjeta">Nombre: </label>
-        <input type="text" id="tarjeta" value="Número de Tarjeta"><br><br>
+        <input type="text" id="tarjeta" placeholder="Número de Tarjeta"><br><br>
 
-        <label for="ccv">CCV: </label>
-        <input type="text" id="ccv" value="CCV">
+        <label for="cvv">CVV: </label>
+        <input type="text" id="cvv" placeholder="CVV"><br><br>
 
+        <label for="activa">Activa: </label>
+        <input type="checkbox" id="activa"><br><br>
+
+        <button id="guardar">Guardar Tarjeta</button>
+        <p id="error"></p>
     </div>
-    
+
+    <script src="declaracionClases.js"></script>
+    <script src="app3.js"></script>
 </body>
 
 </html>
