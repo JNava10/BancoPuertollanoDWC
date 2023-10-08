@@ -51,7 +51,7 @@ retirarBoton.addEventListener('click', function(){
 
 ingresarBoton.addEventListener('click', function(){ 
     if (cantRegex.test(ingresarInput.value) && cuenta.ingresarSaldo(ingresarInput.value) == true){
-        cuenta.retirarSaldo(ingresarInput.value)
+        cuenta.ingresarSaldo(ingresarInput.value)
         mensajeOcultoInput.style.color = 'green'
         mensajeOcultoInput.innerHTML = "Saldo ingresado correctamente: " + ingresarInput.value;
         saldoInput.value = cuenta.saldo;
