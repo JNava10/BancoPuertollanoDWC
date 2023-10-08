@@ -7,8 +7,8 @@ let ibanInput = document.getElementById('iban')
 let saldoInput = document.getElementById('saldo')
 
 // Datos de la persona en la nueva pantalla
-var persona = localStorage.getItem("persona")
-var str = JSON.parse(persona)
+var personaSt = localStorage.getItem("persona")
+var per = JSON.parse(personaSt)
 
 var cuenta 
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {// Inicia la función 
     var cu = JSON.parse(cuentaSt)
 
     if (cuentaSt == null){
-        cuenta = new Cuenta("ES21 1465 0100 72 2030876293", 500)
+        cuenta = new Cuenta(per, "ES21 1465 0100 72 2030876293", 500)
     } else {
         cuenta = cu
     }

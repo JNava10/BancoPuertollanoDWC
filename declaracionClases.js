@@ -18,7 +18,8 @@ class Persona {
 
   class Cuenta {
 
-    constructor (iban, saldo, tarjetas){
+    constructor (persona, iban, saldo, tarjetas){
+        this.persona = persona
         this.iban = iban
         this.saldo = saldo
         this.tarjetas = tarjetas || [] // Lo inicializa como un array vacío de tarjetas
