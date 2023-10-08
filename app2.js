@@ -1,5 +1,5 @@
 let retirarInput = document.getElementById('retirar')
-let ingresarInput = document.getElementBytId('ingresar')
+let ingresarInput = document.getElementById('ingresar')
 let retirarBoton = document.getElementById('retirarBoton')
 let ingresarBoton = document.getElementById('ingresarBoton')
 let mensajeOcultoInput = document.getElementById('mensajeOculto')
@@ -14,7 +14,7 @@ var cuenta
 
 document.addEventListener("DOMContentLoaded", function() {// Inicia la función al abrir el html. Modificiación de la función cargarDatos()
     if (cuenta == null){
-        cuenta = new Cuenta(500, "ES21 1465 0100 72 2030876293")
+        cuenta = new Cuenta("ES21 1465 0100 72 2030876293", 500)
     } 
 
     ibanInput.value = cuenta.iban
@@ -22,52 +22,39 @@ document.addEventListener("DOMContentLoaded", function() {// Inicia la función 
 }); 
 
 function navegar(){
-    var cu = JSON.stringify(persona);
-    localStorage.setItem(cu)
-    window.location.href='tarjetas.html'
+    var cu = JSON.stringify(cuenta);
+    localStorage.setItem("cuenta", cu)
 }
 
 var cantRegex = /^[0-9]+$/ // Valida que los campos sean números
 
 retirarBoton.addEventListener('click', function(){
-    if (cantRegex.test(retirarInput.value) == true){
-        if (cuenta.retirarSaldo(retirarInput.value) == true){
-            cuenta.retirarSaldo(retirarInput.value)
-            mensajeOcultoInput.style = 'green'
-            mensajeOcultoInput.innerHTML = "Saldo retirado correctamente: "+retirarInput
-            saldoInput.value = cuenta.saldo;
-        } else {
-            mensajeOcultoInput.style = 'red'
-            mensajeOcultoInput.innerHTML = "Operación incorrecta - saldo no retirado"
-        }
+    if (cantRegex.test(retirarInput.value) && cuenta.retirarSaldo(retirarInput.value) == true) {
+        cuenta.retirarSaldo(retirarInput.value)
+        mensajeOcultoInput.style.color = 'green'
+        mensajeOcultoInput.innerHTML = "Saldo retirado correctamente: " + retirarInput.value;
+        saldoInput.value = cuenta.saldo;
     } else {
-        mensajeOcultoInput.style = 'red'
-            mensajeOcultoInput.innerHTML = "Operación incorrecta - saldo no retirado"
+        mensajeOcultoInput.style.color = 'red'; 
+        mensajeOcultoInput.innerHTML = "Operación incorrecta - saldo no retirado";
     }
 
-    if (ingresarInput.value != null){
-        ingresarInput.value = null
-    }
+    navegar()
+    ingresarInput.value = ""; 
 })
 
 ingresarBoton.addEventListener('click', function(){ 
-    if (cantRegex.test(retirarInput.value) == true){
-        if (cuenta.ingresarSaldo(ingresarInput.value) == true){
-            cuenta.ingresarSaldo(ingresarInput.value)
-            mensajeOcultoInput.style = 'green'
-            mensajeOcultoInput.innerHTML = "Saldo ingresado correctamente: "+ingresarInput
-            saldoInput.value = cuenta.saldo;
-        } else {
-            mensajeOcultoInput.style = 'red'
-            mensajeOcultoInput.innerHTML = "Operación incorrecta - saldo no ingresado"
-        }
+    if (cantRegex.test(ingresarInput.value) && cuenta.ingresarSaldo(ingresarInput.value) == true){
+        cuenta.retirarSaldo(ingresarInput.value)
+        mensajeOcultoInput.style.color = 'green'
+        mensajeOcultoInput.innerHTML = "Saldo ingresado correctamente: " + ingresarInput.value;
+        saldoInput.value = cuenta.saldo;
     } else {
-        mensajeOcultoInput.style = 'red'
-            mensajeOcultoInput.innerHTML = "Operación incorrecta - saldo no ingresado"
+        mensajeOcultoInput.style.color = 'red'; 
+        mensajeOcultoInput.innerHTML = "Operación incorrecta - saldo no ingresado";
     }
 
-    if (retirarInput.value != null){
-        retirarInput.value = null
-    }
+    navegar()
+    retirarInput.value = ""; 
 })
 

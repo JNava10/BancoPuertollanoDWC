@@ -26,8 +26,9 @@ class Persona {
 
     retirarSaldo(cant){
         var result = true
-        if (cant < this.saldo){
-            this.saldo -= cant
+        var cantidad = parseFloat(cant)
+        if (cantidad < this.saldo && cantidad > 0){
+            this.saldo -= cantidad
         } else {
             result = false
         }
@@ -36,8 +37,9 @@ class Persona {
 
     ingresarSaldo(cant){
         var result = true
-        if (cant > 0){
-            this.saldo += cant
+        var cantidad = parseFloat(cant)
+        if (cantidad > 0){
+            this.saldo += cantidad
         } else {
             result = false
         }
