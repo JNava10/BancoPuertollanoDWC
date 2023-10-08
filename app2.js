@@ -3,47 +3,12 @@ let ingresarInput = document.getElementBytId('ingresar')
 let retirarBoton = document.getElementById('retirarBoton')
 let ingresarBoton = document.getElementById('ingresarBoton')
 let mensajeOcultoInput = document.getElementById('mensajeOculto')
-
-// Script de la pantalla Información Cuenta
 let ibanInput = document.getElementById('iban')
 let saldoInput = document.getElementById('saldo')
 
 // Datos de la persona en la nueva pantalla
 var persona = localStorage.getItem("persona")
 var str = JSON.parse(persona)
-
-class Cuenta {
-
-    constructor (iban, saldo, tarjetas){
-        this.iban = iban
-        this.saldo = saldo
-        this.tarjetas = tarjetas || [] // Lo inicializa como un array vacío de tarjetas
-    }
-
-    retirarSaldo(cant){
-        var result = true
-        if (cant < this.saldo){
-            this.saldo -= cant
-        } else {
-            result = false
-        }
-        return result
-    }
-
-    ingresarSaldo(cant){
-        var result = true
-        if (cant > 0){
-            this.saldo += cant
-        } else {
-            result = false
-        }
-        return result
-    }
-
-    aniadirTarjeta(tarj){
-        this.tarjetas.push(tarj)
-    }
-}
 
 var cuenta 
 

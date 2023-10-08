@@ -5,16 +5,6 @@ let nacionalidadInput = document.getElementById('nacionalidad');
 let modificarInput = document.getElementById('modificar');
 let mensajeOcultoInput = document.getElementById('mensajeOculto');
 
-class Persona {
-
-  constructor(nombre, apellido1, apellido2, nacionalidad) {
-    this.nombre = nombre;
-    this.apellido1 = apellido1;
-    this.apellido2 = apellido2;
-    this.nacionalidad = nacionalidad;
-  }
-}
-
 var persona =
 
 document.addEventListener("DOMContentLoaded", function() {// Inicia la función al abrir el html. Modificiación de la función cargarDatos()
