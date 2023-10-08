@@ -19,10 +19,12 @@ document.addEventListener("DOMContentLoaded", function() {// Inicia la función 
 
     if (cuentaSt == null){
         cuenta = new Cuenta(per, "ES21 1465 0100 72 2030876293", 500)
+        navegar()
     } else {
         cuenta = cu
         if (cuenta.persona != per){
             cuenta.persona = per //Se modifica los datos de la persona en la tarjeta a la nueva persona
+            navegar()
         }
     }
 

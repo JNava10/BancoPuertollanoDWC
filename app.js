@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {// Inicia la función 
 
     if (personaSt == null){
         persona = new Persona('Leon','Scott','Kennedy', 'Estadounidense', 500, "ES21 1465 0100 72 2030876293")  
+        navegar()
     } else {
         persona = str
     }
@@ -24,10 +25,9 @@ document.addEventListener("DOMContentLoaded", function() {// Inicia la función 
 
 }); 
 
-function navegar(){
+function navegar(){ //Funciona para guardar los datos en caché
     var str = JSON.stringify(persona);
     localStorage.setItem("persona", str)
-    // window.location.href='infoCuenta.html'
 }
 
 function cargarCabecera(dest){
